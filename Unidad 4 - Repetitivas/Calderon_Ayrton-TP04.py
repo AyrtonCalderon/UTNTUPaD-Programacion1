@@ -70,6 +70,56 @@ for i in range(0, (n_entero + 1)):  # 'i' camina desde 0 hasta n_entero
 
 print("La suma total es:", suma)
 
+#EJERCICIO 8
+pares=0
+impares=0
+positivos=0
+negativos=0
+
+cantidad=5
+
+for i in range(cantidad):
+    num = int(input("Ingrese un número: "))
+    if num % 2 == 0:
+        pares += 1
+    else:
+        impares += 1
+    if num > 0:
+        positivos += 1
+    elif num < 0:
+        negativos += 1
+print("Pares:", pares)
+print("Impares:", impares)
+print("Positivos:", positivos)
+print("Negativos:", negativos)
+
+#Ejercicio 9
+
+cantidad = 100
+suma = 0
+
+for i in range(cantidad):
+    num = int(input("Ingrese un numero: "))
+    suma += num
+
+media = suma / cantidad
+
+print("La media de los números es:", media)
+
+#Ejercicio 10
+
+numero = int(input("Ingrese un numero: "))
+invertido = 0
+
+while numero > 0:
+    ultimo_digito = numero % 10          # Sacamos el último numero (ej: de 123 saca 3)
+    invertido = (invertido * 10) + ultimo_digito  # Lo agregamos al nuevo numero
+    numero = numero // 10                # Le sacamos el ultimo numero a 'numero' (queda 1)
+
+print("El número invertido es:", invertido)
+
+
+
 
 
 
