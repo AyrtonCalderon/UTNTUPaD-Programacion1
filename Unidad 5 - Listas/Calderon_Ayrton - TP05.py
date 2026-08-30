@@ -59,4 +59,91 @@ numeros.remove(max(numeros))
 
 # ---Imprime la lista resultante: [8, 15, 3, 7]
 print(numeros)
+#==========================================================================
+#Ejercicio 06
+
+# --------------Creamos la lista del 10 al 30 de 5 en 5 usando range
+# --------------Se usa 31 como limite superior para incluir el 30
+numeros = list(range(10, 31, 5))
+
+# -----------------Mostramos los dos primeros elementos usando slicing [0:2]
+dos_primeros = numeros[0:2]
+
+# ----------Imprime el resultado
+print("Lista completa:", numeros)
+print("Los dos primeros elementos son:", dos_primeros)
+
+#==========================================================================
+#Ejercicio 07
+
+#----Lista inicial de autos
+autos = ["sedan", "polo", "suran", "gol"]
+
+#---------Reemplazamos los elementos en los indices 1 y 2 usando slicing
+autos[1:3] = ["corolla", "cronos"]
+
+# ---------Imprimimos la lista resultante
+print("Lista modificada:", autos)
+
+#==========================================================
+#Ejercicio 08
+
+# --------------------Creamos la lista vacia
+dobles = []
+
+# -------------------Agregamos el doble de cada numero directamente con append
+dobles.append(5 * 2)
+dobles.append(10 * 2)
+dobles.append(15 * 2)
+
+# -----------------------Imprimimos la lista resultante
+print("Lista de dobles:", dobles)
+
+# Lista inicial de compras
+compras = [["pan", "leche"], ["arroz", "fideos", "salsa"], ["agua"]]
+
+# a) Agregar "jugo" a la lista del tercer cliente (indice 2)
+compras[2].append("jugo")
+
+# b) Reemplazar "fideos" por "tallarines" en la lista del segundo cliente (indice 1, subindice 1)
+compras[1][1] = "tallarines"
+
+# c) Eliminar "pan" de la lista del primer cliente (indice 0)
+compras[0].remove("pan")
+
+# d) Imprimir la lista resultante por pantalla
+print("Lista final de compras:", compras)
+
+#==========================================================
+#Ejercicio 09
+# Lista inicial de compras
+compras = [["pan", "leche"], ["arroz", "fideos", "salsa"], ["agua"]]
+
+# a) Agregar "jugo" a la lista del tercer cliente (indice 2)
+compras[2].append("jugo")
+
+# b) Reemplazar "fideos" por "tallarines" en la lista del segundo cliente (indice 1, subindice 1)
+compras[1][1] = "tallarines"
+
+# c) Eliminar "pan" de la lista del primer cliente (indice 0)
+compras[0].remove("pan")
+
+# d) Imprimir la lista resultante por pantalla
+print("Lista final de compras:", compras)
+
+#==========================================================
+#Ejercicio 10
+
+#----------------------------Creamos la lista anidada con la estructura indicada
+lista_anidada = [
+    15,                      # Posicion lista_anidada[0]
+    True,                    # Posicion lista_anidada[1]
+    [25.5, 57.9, 30.6],      # Posicion lista_anidada[2] (sublista con indices 0, 1 y 2)
+    False                    # Posicion lista_anidada[3]
+]
+
+# --------------------Imprimimos la lista resultante por pantalla
+print(lista_anidada)
+
+
 
