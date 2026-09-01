@@ -1,5 +1,14 @@
 #Listas bidimensionales
 #=======================================================================
+#Ejercicio 1
+
+#=======================================================================
+#Ejercicio 2
+
+#=======================================================================
+#Ejercicio 3
+
+#=======================================================================
 #Ejercicio 4
 
 #--Definimos la matriz original (2 filas x 3 columnas)
@@ -103,3 +112,76 @@ for fila in matriz:
 print(f"Matriz multiplicada por {escalar}:")
 for fila in matriz_resultante:
     print(fila)
+#=======================================================================
+#Ejercicio 7
+
+matriz = [
+    [10, 20, 30],
+    [40, 50, 60],
+    [70, 80, 90]
+]
+
+# Extrae matriz[i][i] para cada posición i
+diagonal = [matriz[i][i] for i in range(len(matriz))]
+
+print("Diagonal principal:", diagonal)
+#=======================================================================
+#Ejercicio 8
+
+# Pedimos al usuario el tamaño n de la matriz
+n = int(input("Ingrese el tamaño de la matriz identidad (n): "))
+
+# Creamos la matriz vacia
+matriz_identidad = []
+
+# Generamos las filas y columnas mediante ciclos anidados
+for i in range(n):
+    fila = []
+    for j in range(n):
+        # Si fila == columna estamos en la diagonal principal, ponemos un 1
+        if i == j:
+            fila.append(1)
+        else:
+            fila.append(0)
+    # Agregamos la fila a la matriz
+    matriz_identidad.append(fila)
+
+# 4. Mostramos la matriz formateada
+print(f"Matriz Identidad de tamaño {n}x{n}:")
+for fila in matriz_identidad:
+    print(fila)
+#=======================================================================
+#Ejercicio 9
+
+# Pedimos al usuario el tamaño n de la matriz
+n = int(input("Ingrese el tamaño de la matriz (n): "))
+
+# Lista vacía para construir la matriz
+matriz_inversa = []
+
+# Recorremos filas y columnas
+for i in range(n):
+    fila = []
+    for j in range(n):
+        # La diagonal secundaria cumple que i + j == n - 1
+        if i + j == n - 1:
+            fila.append(1)
+        else:
+            fila.append(0)
+    matriz_inversa.append(fila)
+
+# Mostramos el resultado
+print(f"Matriz Identidad Inversa de tamaño {n}x{n}:")
+for fila in matriz_inversa:
+    print(fila)
+#=======================================================================
+#Ejercicio 10
+
+#=======================================================================
+#Ejercicio 11
+
+#=======================================================================
+#Ejercicio 12
+
+#=======================================================================
+#Ejercicio 13
