@@ -29,11 +29,12 @@ print("Lista multiplicada:", resultado)
 
 # Pedir ingreso de datos
 entrada = input("Ingrese numeros separados por espacios: ")
-numeros = [float(x) for x in entrada.split()]
 
-# Convertir a conjunto para eliminar repetidos y reconvertir a lista
-sin_duplicados = list(set(numeros))
+lista_original = []
+for x in entrada.split():
+    lista_original.append(float(x))
 
-# Mostrar resultado
-print("Lista sin duplicados:", sin_duplicados)
+# Guardamos directamente en el set
+sin_duplicados = set(lista_original)
 
+print("Elementos sin duplicados:", sin_duplicados)
