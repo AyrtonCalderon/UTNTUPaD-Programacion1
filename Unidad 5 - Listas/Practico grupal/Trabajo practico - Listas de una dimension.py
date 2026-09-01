@@ -26,15 +26,15 @@ print("Lista multiplicada:", resultado)
 
 #==================================
 #Ejercicio 6
-
-# Pedir ingreso de datos
+# Pedir ingreso de datos: En este caso, el programa pide una cantidad de numeros al usuario y los almacena en la lista
 entrada = input("Ingrese numeros separados por espacios: ")
 
-lista_original = []
+#Hace una lista vacia 
+lista_original = [] #Inicializa una lista que esta vacia para guardar valores
 for x in entrada.split():
     lista_original.append(float(x))
 
-# Guardamos directamente en el set
+# Guardamos directamente en el set, y seran elementos sin duplicado 
 sin_duplicados = set(lista_original)
 
 print("Elementos sin duplicados:", sin_duplicados)
