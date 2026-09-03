@@ -75,4 +75,24 @@ lista = [1, 2, 3]
 operar_lista(lista)
 print("Lista final:", lista)
 
+#Clonacion
+import copy
+
+def modificar_listas(original, copia_superficial, copia_deep):
+    original[0] [0]="X"
+    copia_superficial[0] [1]= "Y"
+    copia_deep[0] [2]= "Z"
+
+
+data = [[1, 2, 3], [4, 5, 6]]
+copia_superficial = copy.copy(data)
+copia_Prof = copy.deepcopy(data)
+
+modificar_listas(data , copia_superficial , copia_Prof)
+
+print("Original: ", data)
+print("Copia superficial: ", copia_superficial)
+print("Copia profunda: ", copia_Prof)
+
+
 
