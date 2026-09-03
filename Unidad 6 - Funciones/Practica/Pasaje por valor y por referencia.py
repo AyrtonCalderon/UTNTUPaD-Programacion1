@@ -47,3 +47,32 @@ def reasignar_lista(lista):
 mi_lista = [1, 2, 3]
 reasignar_lista(mi_lista)
 print("Fuera de la funcion:", mi_lista)
+
+#Lista de listas
+
+def agregar_elementos(matriz):
+    matriz[0].append(99)
+    matriz.append([4, 5, 6])
+
+matriz = [[1, 2 ], [3, 4]]
+agregar_elementos(matriz)
+print("Matriz final:", matriz)
+
+#Reasignacion de lista
+def reemplazar_sublista(matriz):
+    matriz[0] = [0, 0, 0] #Reasignacion interna, reemplaza la referencia 
+
+matriz= [[1, 2] , [3, 4]]
+reemplazar_sublista(matriz)
+print("Matriz modificada:", matriz)
+
+#Comparacion 
+def operar_lista(lst):
+    lst.append(10) #Modificar objeto original
+    lst = [0, 0, 0] #Reasignar la variable original
+
+lista = [1, 2, 3]
+operar_lista(lista)
+print("Lista final:", lista)
+
+
