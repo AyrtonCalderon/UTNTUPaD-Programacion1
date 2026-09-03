@@ -15,6 +15,7 @@ mi_lista = [1, 2, 3]
 agregar_elementos(mi_lista)
 print("Fuera de la funcion:", mi_lista)
 
+#Modificacion de listas
 
 #PASO INMUTABLE
 def modificar_valor(x):
@@ -35,4 +36,14 @@ def modificar_lista(lista):
 
 mi_lista = [1, 2, 3]
 modificar_lista(mi_lista)
+print("Fuera de la funcion:", mi_lista)
+
+#Reasignacion
+def reasignar_lista(lista):
+    print("Dentro de la funcion antes de reasignar:", lista)
+    lista = [4, 4 , 4]
+    print("Dentro de la funcion despues de reasignar:", lista)
+
+mi_lista = [1, 2, 3]
+reasignar_lista(mi_lista)
 print("Fuera de la funcion:", mi_lista)
