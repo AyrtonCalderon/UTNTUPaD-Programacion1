@@ -6,5 +6,5 @@ def doble(num):
     return num * 2
 
 #Programa principal
-print (doble(siguiente(4)))
+print (doble(siguiente(4) ) )
 

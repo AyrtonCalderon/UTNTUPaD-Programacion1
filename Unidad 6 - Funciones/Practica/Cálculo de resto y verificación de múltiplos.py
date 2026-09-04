@@ -15,3 +15,5 @@ print(f"El resto entre {a} y {b} es {resto}")
 
 if es_multiplo(a,b):
     print(f"{a} es multiplo de {b}")
+
+    
