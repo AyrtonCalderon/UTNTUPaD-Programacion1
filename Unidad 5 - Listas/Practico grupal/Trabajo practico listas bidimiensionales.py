@@ -1,13 +1,49 @@
 #Listas bidimensionales
 #=======================================================================
 #Ejercicio 1
-
+filas = int(input("Ingrese la cantidad de filas que desea agregar: "))
+columnas = int(input("Ingrese la cantidad de columnas que desea agregar: "))
+matriz_fila = []
+contador = 1
+for fila in range(filas):
+    matriz_columna = []
+    for columna in range(columnas):
+        matriz_columna.append(contador)
+        contador += 1
+    matriz_fila.append(matriz_columna)
+print(matriz_fila)
 #=======================================================================
 #Ejercicio 2
-
+filas = int(input("Ingrese la cantidad de filas que desea agregar: "))
+columnas = int(input("Ingrese la cantidad de columnas que desea agregar: "))
+matriz_fila = []
+contador = 1
+for fila in range(filas):
+    matriz_columna = []
+    for columna in range(columnas):
+        matriz_columna.append(contador)
+        contador += 1
+    matriz_fila.append(matriz_columna)
+print(matriz_fila)
+suma_total = sum(sum(fila) for fila in matriz_fila)
+print(suma_total)
 #=======================================================================
 #Ejercicio 3
+# Modifica el programa anterior para que imprima la suma de cada fila de la lista bidimensional.
+filas = int(input("Ingrese la cantidad de filas que desea agregar: "))
+columnas = int(input("Ingrese la cantidad de columnas que desea agregar: "))
+matriz = []
+contador = 1
+for fila in range(filas):
+    matriz_fila = []
+    for columna in range(columnas):
+        matriz_fila.append(contador)
+        contador += 1
+    matriz.append(matriz_fila)
+    suma = sum(matriz_fila)
 
+    print(f"La suma de la fila {fila + 1} es {suma}")
+print(matriz)
 #=======================================================================
 #Ejercicio 4
 
