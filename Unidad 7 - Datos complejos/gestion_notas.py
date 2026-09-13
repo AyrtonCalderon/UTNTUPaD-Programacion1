@@ -23,7 +23,7 @@ materias = [
             ["Ciencias", 0 , 0 , 0.0] ,
             ["Fisica" , 0 , 0 , 0.0]
 ]
-.
+
 # 3. Lista notasFinales (Bidimensional)
 # [
 #   [Nombre_Alumno, Promedio_General],
