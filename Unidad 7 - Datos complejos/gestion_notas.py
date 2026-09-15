@@ -8,6 +8,7 @@ def pedir_nota_valida(mensaje):
         nota = float(input(mensaje))
     return nota
 
+
 # 2. Funcion principal que procesa a los alumnos
 def cargar_notas_alumnos(alumnos, materias):
     notasFinales = []
