@@ -1,1 +1,5 @@
 Juan;Perez;53365;8.0
+pablo;peres;54321;8.12
+maria;peres;46149;10.0
+Ariel;Sosa;78945;9.67
+Ayrton;Calderon;45879;8.9
