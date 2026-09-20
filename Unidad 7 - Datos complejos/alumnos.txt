@@ -1,6 +1,0 @@
-Juan;Perez;53365;8
-Juan;Perez;12345;1.3
-pablo;peres;54321;8.12
-maria;peres;46149;10.0
-Ariel;Sosa;78945;9.67
-Ayrton;Calderon;45879;8.9

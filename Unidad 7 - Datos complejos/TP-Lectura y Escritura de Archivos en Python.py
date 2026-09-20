@@ -22,7 +22,6 @@ def leer_alumnos():
                     }
                     lista.append(alumno)
     except FileNotFoundError:
-        # Si el archivo no existe en la carpeta, inicia con lista vacía
         pass
     return lista
 
@@ -104,7 +103,7 @@ def agregar_alumno(lista_alumnos, dicc_alumnos):
 # ==============================================================================
 
 def guardar_aprobados(lista_alumnos):
-    print("\n--- ALUMNOS APROBADOS ---")
+    print("\n--- ALUMNOS APROBADOS (Nota >= 6) ---")
     with open("aprobados.txt", "w") as archivo_aprobados:
         for alumno in lista_alumnos:
             if alumno["nota"] >= 6:
@@ -126,7 +125,12 @@ dicc_alumnos = {alumno["legajo"]: alumno for alumno in lista_alumnos}
 # 3. Pedir datos y agregar nuevo alumno
 agregar_alumno(lista_alumnos, dicc_alumnos)
 
-# 4. Exportar y mostrar aprobados
+# 4. Mostrar listado completo en consola
+print("\n--- LISTADO COMPLETO DE ALUMNOS EN MEMORIA ---")
+for alu in lista_alumnos:
+    print(f"{alu['nombre']} {alu['apellido']} | Legajo: {alu['legajo']} | Nota: {alu['nota']}")
+
+# 5. Exportar y mostrar aprobados
 guardar_aprobados(lista_alumnos)
 
 
