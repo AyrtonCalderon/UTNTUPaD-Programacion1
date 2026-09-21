@@ -1,2 +1,3 @@
 
 Ayrton;Calderon;12345;6.9
+Fernando;Funez;32165;5.75
