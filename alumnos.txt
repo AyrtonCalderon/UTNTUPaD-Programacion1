@@ -1,4 +1,0 @@
-
-Ayrton;Calderon;12345;6.9
-Fernando;Funez;32165;5.75
-Erica;Calderon;12354;8.2
