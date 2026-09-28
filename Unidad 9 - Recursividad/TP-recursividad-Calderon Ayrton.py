@@ -8,54 +8,49 @@
 # ------------------------------------------------------------------------------
 
 class Archivo:
-    """Clase que representa un archivo individual dentro del sistema.
-
-    Es un elemento hoja (no contiene otros objetos dentro).
-    """
+    """Clase que representa un archivo individual dentro del sistema."""
 
     def __init__(self, nombre: str, tamaño_bytes: int):
-        self.nombre = nombre  # Nombre del archivo (ej. 'documento.pdf')
-        self.tamaño_bytes = tamaño_bytes  # Tamaño en bytes (ej. 1500)
+        self.nombre = nombre
+        self.tamaño_bytes = tamaño_bytes
 
 
 class Directorio:
-    """Clase que representa un directorio/carpeta.
-
-    Es una estructura de nodo jerarquica que puede contener tanto archivos
-    locales como otros subdirectorios de forma autorreferencial.
-    """
+    """Clase que representa un directorio/carpeta."""
 
     def __init__(self, nombre: str):
-        self.nombre = nombre  # Nombre del directorio (ej. 'root')
-        self.archivos = []  # Lista que contendra objetos de clase Archivo
-        self.subdirectorios = (
-            []
-        )  # Lista que contendra objetos de clase Directorio
+        self.nombre = nombre
+        self.archivos = []
+        self.subdirectorios = []
 
 
 # ------------------------------------------------------------------------------
-# 3. FUNCIONES RECURSIVAS REQUERIDAS
+# 3. FUNCIONES RECURSIVAS
 # ------------------------------------------------------------------------------
+
+
+# --- FUNCION PARA MOSTRAR LA ESTRUCTURA EN FORMA DE ARBOL ---
+def mostrar_arbol(directorio: Directorio, nivel: int = 0):
+    prefijo = "  " * nivel
+    print(f"{prefijo}├── {directorio.nombre}/")
+
+    for archivo in directorio.archivos:
+        print(f"{prefijo}  ├── {archivo.nombre} ({archivo.tamaño_bytes} bytes)")
+
+    for subdirectorio in directorio.subdirectorios:
+        mostrar_arbol(subdirectorio, nivel + 1)
 
 
 # --- FUNCION 1: Calculo del Tamaño Total de un Directorio ---
 def calcular_tamaño_total(directorio: Directorio) -> int:
-    """Calcula recursivamente el peso total de un directorio sumando sus archivos
-
-    locales y el peso de todas sus subcarpetas.
-    """
-    # CASO BASE: Sumar el tamaño de los archivos que estan directamente en esta carpeta
     tamaño_archivos_locales = sum(
         archivo.tamaño_bytes for archivo in directorio.archivos
     )
 
-    # PASO RECURSIVO: Recorrer cada subdirectorio y llamar recursivamente a la funcion
     tamaño_subdirectorios = 0
     for subdirectorio in directorio.subdirectorios:
-        # La llamada recursiva calcula el peso total de la subcarpeta completa
         tamaño_subdirectorios += calcular_tamaño_total(subdirectorio)
 
-    # El resultado final es la combinacion del peso local mas el peso de los subdirectorios
     return tamaño_archivos_locales + tamaño_subdirectorios
 
 
@@ -63,28 +58,18 @@ def calcular_tamaño_total(directorio: Directorio) -> int:
 def buscar_por_extension(
     directorio: Directorio, extension: str, ruta_actual: str = ""
 ) -> list[str]:
-    """Recorre la jerarquia de directorios y devuelve una lista con las rutas
-
-    completas de los archivos que coincidan con la extension buscada (ej.
-    '.pdf').
-    """
-    # Construccion de la ruta jerarquica acumulada (ej. 'root/proyectos')
     if not ruta_actual:
-        ruta_actual = directorio.nombre  # Si es el directorio raiz inicial
+        ruta_actual = directorio.nombre
     else:
-        ruta_actual = f"{ruta_actual}/{directorio.nombre}"  # Anexa el nombre de la subcarpeta
+        ruta_actual = f"{ruta_actual}/{directorio.nombre}"
 
     resultados = []
 
-    # INSPECCION LOCAL: Revisa los archivos del directorio actual
     for archivo in directorio.archivos:
-        # endswith verifica si el nombre termina con la extension indicada
         if archivo.nombre.endswith(extension):
             resultados.append(f"{ruta_actual}/{archivo.nombre}")
 
-    # PASO RECURSIVO: Llama a la funcion para cada subdirectorio e integra los resultados
     for subdirectorio in directorio.subdirectorios:
-        # .extend une la lista devuelta por la llamada recursiva a la lista de resultados actual
         resultados.extend(
             buscar_por_extension(subdirectorio, extension, ruta_actual)
         )
@@ -92,31 +77,22 @@ def buscar_por_extension(
     return resultados
 
 
-# --- FUNCION 3: Eliminacion Recursiva de Archivos Vacios (Limpieza de Disco) ---
+# --- FUNCION 3: Eliminacion Recursiva de Archivos Vacios ---
 def limpiar_archivos_vacios(directorio: Directorio) -> int:
-    """Elimina recursivamente todos los objetos Archivo cuyo tamaño sea 0 bytes y
-
-    retorna el numero total de archivos eliminados en toda la jerarquia.
-    """
-    # 1. Contar cuantos archivos vacios (0 bytes) existen en la carpeta actual
     eliminados_locales = sum(
         1 for archivo in directorio.archivos if archivo.tamaño_bytes == 0
     )
 
-    # 2. Filtrar la lista del directorio actual, conservando solo los que pesan mas de 0 bytes
     directorio.archivos = [
         archivo
         for archivo in directorio.archivos
         if archivo.tamaño_bytes > 0
     ]
 
-    # 3. PASO RECURSIVO: Propagar el proceso de limpieza sobre cada subdirectorio
     eliminados_subdirectorios = 0
     for subdirectorio in directorio.subdirectorios:
-        # Acumula las eliminaciones realizadas en los niveles inferiores de la jerarquia
         eliminados_subdirectorios += limpiar_archivos_vacios(subdirectorio)
 
-    # Devuelve la suma de las eliminaciones hechas localmente mas las de los subdirectorios
     return eliminados_locales + eliminados_subdirectorios
 
 
@@ -127,51 +103,53 @@ def limpiar_archivos_vacios(directorio: Directorio) -> int:
 if __name__ == "__main__":
     # 1. Creacion del directorio raiz "root"
     root = Directorio("root")
-    root.archivos.append(Archivo("documento.pdf", 1500))  # Archivo de 1500 bytes
-    root.archivos.append(Archivo("config.txt", 0))  # Archivo vacio (0 bytes)
+    root.archivos.append(Archivo("documento.pdf", 1500))
+    root.archivos.append(Archivo("config.txt", 0))
 
-    # 2. Creacion del subdirectorio "imagenes" y sus archivos
+    # 2. Subdirectorio "imagenes"
     imagenes = Directorio("imagenes")
     imagenes.archivos.append(Archivo("foto1.png", 2000))
     imagenes.archivos.append(Archivo("foto2.png", 3500))
-    root.subdirectorios.append(imagenes)  # Se agrega "imagenes" dentro de "root"
+    root.subdirectorios.append(imagenes)
 
-    # 3. Creacion del subdirectorio "proyectos" y su subcarpeta "temp"
+    # 3. Subdirectorio "proyectos" y "temp"
     proyectos = Directorio("proyectos")
     proyectos.archivos.append(Archivo("avance.pdf", 800))
 
     temp = Directorio("temp")
-    temp.archivos.append(Archivo("log.txt", 0))  # Archivo vacio (0 bytes)
-    proyectos.subdirectorios.append(
-        temp
-    )  # Se agrega "temp" dentro de "proyectos"
+    temp.archivos.append(Archivo("log.txt", 0))
+    proyectos.subdirectorios.append(temp)
 
-    root.subdirectorios.append(
-        proyectos
-    )  # Se agrega "proyectos" dentro de "root"
+    root.subdirectorios.append(proyectos)
 
     # --------------------------------------------------------------------------
-    # IMPRESION Y VALIDACION DE RESULTADOS EN CONSOLA
+    # EJECUCION Y SALIDAS
     # --------------------------------------------------------------------------
     print("==================================================")
+    print("           ESTRUCTURA VISUAL DEL ARBOL            ")
+    print("==================================================")
+    mostrar_arbol(root)
+
+    print("\n==================================================")
     print("        RESULTADOS DE VALIDACION DEL TP           ")
     print("==================================================")
 
-    # Validacion 1: Calculo del tamaño total (Esperado: 7800 bytes)
+    # Validacion 1
     tamaño_total = calcular_tamaño_total(root)
     print(f"1. Tamaño total del directorio root: {tamaño_total} bytes")
 
-    # Validacion 2: Busqueda de archivos .pdf (Esperado: ['root/documento.pdf', 'root/proyectos/avance.pdf'])
+    # Validacion 2
     archivos_pdf = buscar_por_extension(root, ".pdf")
     print(f"2. Archivos con extension '.pdf' encontrados:")
     for ruta in archivos_pdf:
         print(f"   - {ruta}")
 
-    # Validacion 3: Limpieza de archivos de 0 bytes (Esperado: 2 eliminados)
+    # Validacion 3
     borrados = limpiar_archivos_vacios(root)
     print(f"3. Archivos vacios (0 bytes) eliminados: {borrados}")
 
-    # Comprobacion posterior: Verificamos el nuevo tamaño tras la limpieza
-    nuevo_tamaño = calcular_tamaño_total(root)
-    print(f"   -> Tamaño total tras la limpieza: {nuevo_tamaño} bytes")
+    # Arbol despues de la limpieza
+    print("\n==================================================")
+    print("        ESTRUCTURA TRAS LA LIMPIEZA               ")
     print("==================================================")
+    mostrar_arbol(root)
