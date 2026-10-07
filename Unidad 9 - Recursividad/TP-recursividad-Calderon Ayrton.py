@@ -122,6 +122,8 @@ if __name__ == "__main__":
 
     root.subdirectorios.append(proyectos)
 
+    root.archivos.append(Archivo("test.pdf", 10000))
+        
     # --------------------------------------------------------------------------
     # EJECUCION Y SALIDAS
     # --------------------------------------------------------------------------
