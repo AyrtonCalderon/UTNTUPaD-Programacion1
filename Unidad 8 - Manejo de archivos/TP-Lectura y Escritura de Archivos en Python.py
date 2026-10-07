@@ -122,8 +122,14 @@ lista_alumnos = leer_alumnos()
 # 2. Crear diccionario por legajo
 dicc_alumnos = {alumno["legajo"]: alumno for alumno in lista_alumnos}
 
-# 3. Pedir datos y agregar nuevo alumno
-agregar_alumno(lista_alumnos, dicc_alumnos)
+#Bucle
+while True:
+    # 3. Pedir datos y agregar nuevo alumno
+    agregar_alumno(lista_alumnos, dicc_alumnos)
+
+    respuesta = input("\n Desea agregrar otro alumno? (s/n): ").strip().lower()
+    if respuesta != "s":
+        break 
 
 # 4. Mostrar listado completo en consola
 print("\n--- LISTADO COMPLETO DE ALUMNOS EN MEMORIA ---")
