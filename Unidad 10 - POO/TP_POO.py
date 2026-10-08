@@ -1,6 +1,6 @@
 #PROGRAMACION ORIENTADA A OBJETOS
 
-# 1
+# Ejercicio 1
 
 # ============================================================
 # CLASE CELDA
@@ -201,7 +201,15 @@ print("Resultado:", resultado)
 
 
 
-                
-                
+            
+    
+
+
+
+
+
+
+
+
 
 
