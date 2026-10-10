@@ -7,8 +7,8 @@ class computadora:
         self.modelo = modelo
         self.componentes: List[ComponenteCPU] = []
 
-    def agregar_componente(self, Componente: ComponenteCPU):
-        self.componentes.append(self.componente)
+    def agregar_componente(self, componente: ComponenteCPU):
+        self.componentes.append(componente)
 
     def calcular_costo(self) -> float:
         total = 0.0

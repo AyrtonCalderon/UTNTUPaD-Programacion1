@@ -8,7 +8,7 @@ def main():
         marca = input("Ingrese la marca de la computadora: ")
         modelo = input("Ingrese el modelo de la computadora: ")
 
-        pc = Computadora(marca, modelo)
+        pc = computadora(marca, modelo)
 
         while True:
             print("\n--- Carga de Componente ---")
