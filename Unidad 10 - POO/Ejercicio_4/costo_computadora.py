@@ -1,5 +1,5 @@
 from componente_cpu import ComponenteCPU
-from computadora import Computadora
+from computadora import computadora
 
 def main():
     continuar = "SI"
