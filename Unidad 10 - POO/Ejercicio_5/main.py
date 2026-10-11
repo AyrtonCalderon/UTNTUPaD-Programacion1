@@ -36,13 +36,13 @@ def main():
   sup_cubierta_total = mi_barrio.getSuperficieTotalCubierta()
   print(f"d) Superficie total cubierta del barrio: {sup_cubierta_total} m2")
 
-  print("\n--- Probando Validación de Excepción ---")
+  print("\n--- VERIFICANDO VALIDACION ---")
   try:
     v_erronea = Vivienda("Mitre", 999, "C", 1, 50.0)
-    v_erronea.agregar_habitacion(Habitacion("Salón gigante", 80.0))
+    v_erronea.agregar_habitacion(Habitacion("Salon gigante", 80.0))
     v_erronea.getMetrosCuadradosCubiertos()
   except ValueError as e:
-    print(f"Excepción atrapada con éxito: {e}")
+    print(f"Excepcion obtenida con exito: {e}")
 
 
 if __name__ == "__main__":
