@@ -1,11 +1,11 @@
-import re
+import re      # Módulo para usar expresiones regulares y validar caracteres
 from barrio import Barrio
 from habitacion import Habitacion
 from vivienda import Vivienda
 
 
 def validar_texto(mensaje):
-  """Función para pedir texto asegurando que no tenga caracteres especiales raros."""
+  """Funcion para pedir texto asegurando que no tenga caracteres especiales raros."""
   while True:
     texto = input(mensaje).strip()
     # Permitimos letras (con acentos y ñ), números y espacios.
