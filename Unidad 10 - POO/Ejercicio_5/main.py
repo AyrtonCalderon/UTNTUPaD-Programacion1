@@ -1,4 +1,6 @@
 import re      # Módulo para usar expresiones regulares y validar caracteres
+
+# Importamos las clases que creamos en los otros archivos del proyecto (Asociacion entre clases)
 from barrio import Barrio
 from habitacion import Habitacion
 from vivienda import Vivienda
@@ -7,13 +9,14 @@ from vivienda import Vivienda
 def validar_texto(mensaje):
   """Funcion para pedir texto asegurando que no tenga caracteres especiales raros."""
   while True:
+    # Solicitamos el dato al usuario y eliminamos espacios en blanco al inicio y final
     texto = input(mensaje).strip()
     # Permitimos letras (con acentos y ñ), números y espacios.
     if re.match(r"^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]+$", texto):
       return texto
     print(
+      #Si el usuario ingresa simbolos prohibidos, muestra este mensaje y vuelve a pedirlo
         "Error: No se permiten simbolos o caracteres especiales."
-        " Reintentemos."
     )
 
 
@@ -23,6 +26,7 @@ def main():
   empresa = validar_texto("Ingrese la empresa constructora: ")
   mi_barrio = Barrio(nombre_barrio, empresa)
 
+# Bucle para permitir ingresar múltiples viviendas al barrio de forma interactiva
   while True:
     print("\n--- AGREGAR NUEVA VIVIENDA ---")
     calle = validar_texto("Calle: ")
