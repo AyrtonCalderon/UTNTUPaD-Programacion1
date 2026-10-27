@@ -86,7 +86,7 @@ def menu():
       eliminar_libro(id_libro)
 
     elif opcion == "6":
-      print("\n¡Saliendo del sistema de biblioteca. ¡Hasta luego!")
+      print("\n¡Saliendo del sistema de biblioteca. Hasta luego")
       break
     else:
       print(" Opción no válida. Por favor, elegí un número del 1 al 6.")
